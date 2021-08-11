@@ -57,7 +57,8 @@ namespace Khepri.PlayAssetDelivery.Editor
 
 			foreach (var bundle in bundles)
 			{
-				string targetPath = Path.Combine(BuildPath, bundle.Name);
+				var hash = bundle.Name.Substring(bundle.Name.Length - 32);
+				string targetPath = Path.Combine(BuildPath, hash);
 				Directory.CreateDirectory(targetPath);
 				string bundlePath = Path.Combine(targetPath, Path.GetFileNameWithoutExtension(bundle.Bundle));
 				File.Copy(bundle.Bundle, bundlePath);
